@@ -17,17 +17,22 @@ export default function Form(props) {
     props.onCancel();
   }
 
+  // Added with mentor
+  function save() {
+    props.onSave(name, interviewer);
+  }
+
   return (
-    <main className="appointment__card appointment__card--create">
-      <section className="appointment__card-left">
-        <form autoComplete="off" onSubmit={event => event.preventDefault()}>
+    <main className='appointment__card appointment__card--create'>
+      <section className='appointment__card-left'>
+        <form autoComplete='off' onSubmit={(event) => event.preventDefault()}>
           <input
-            className="appointment__create-input text--semi-bold"
-            name="name"
-            type="text"
-            placeholder="Enter Student Name"
+            className='appointment__create-input text--semi-bold'
+            name='name'
+            type='text'
+            placeholder='Enter Student Name'
             value={name}
-            onChange={event => {
+            onChange={(event) => {
               setName(event.target.value);
             }}
           />
@@ -38,12 +43,12 @@ export default function Form(props) {
           onChange={setInterviewer}
         />
       </section>
-      <section className="appointment__card-right">
-        <section className="appointment__actions">
+      <section className='appointment__card-right'>
+        <section className='appointment__actions'>
           <Button danger onClick={cancel}>
             Cancel
           </Button>
-          <Button confirm>
+          <Button confirm onClick={save}>
             Save
           </Button>
         </section>
